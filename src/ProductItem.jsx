@@ -1,3 +1,5 @@
+import "./ProductItem.css";
+
 function ProductItem() {
   return (
     <div className="product-item">
