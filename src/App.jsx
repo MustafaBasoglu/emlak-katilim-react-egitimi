@@ -4,13 +4,14 @@ import Button from "./components/UI/Button";
 function App() {
   return (
     <div className="app">
-      <Button type="primary" size="xl" />
+      <Button type="danger" size="sm">
+        Delete
+      </Button>
       <br />
       <br />
-      <Button type="success" size="lg" />
-      <br />
-      <br />
-      <Button type="danger" size="sm" />
+      <Button type="success" size="sm">
+        <strong>Add To Cart</strong>
+      </Button>
       {/* <HomePage /> */}
     </div>
   );
