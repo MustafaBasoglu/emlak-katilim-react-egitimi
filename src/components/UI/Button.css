@@ -29,3 +29,21 @@
 .btn.disabled {
   opacity: 0.65;
 }
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #ff0d00;
+  border-color: #ff3300;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #0dff00;
+  border-color: #00ff1a;
+}
