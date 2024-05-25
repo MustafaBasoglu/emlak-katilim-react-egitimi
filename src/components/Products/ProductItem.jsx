@@ -1,20 +1,19 @@
 import "./ProductItem.css";
 
-function ProductItem() {
-  const img = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg";
-  const title = "Şapka";
-  const price = 500;
+function ProductItem(props) {
+  console.log(props.myName);
+  console.log(props.title);
+  console.log(props.img);
+  console.log(props.price);
 
   return (
     <div className="product-item">
       <div className="product-image">
-        <img
-          src={img}
-        />
+        <img src={props.img} />
       </div>
       <div className="product-info">
-        <strong className="product-title">{title}</strong>
-        <span className="product-price">{price}₺</span>
+        <strong className="product-title">{props.title}</strong>
+        <span className="product-price">{props.price}₺</span>
       </div>
     </div>
   );
