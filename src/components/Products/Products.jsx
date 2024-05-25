@@ -3,7 +3,6 @@ import { productsData } from "../../productsData";
 import "./Products.css";
 
 function Products() {
-    console.log("run!");
   return (
     <div className="products">
       {productsData.map((product) => {

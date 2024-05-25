@@ -1,9 +1,17 @@
-import HomePage from "./pages/HomePage";
+import Button from "./components/UI/Button";
+// import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <div className="app">
-      <HomePage />
+      <Button type="primary" />
+      <br />
+      <br />
+      <Button type="success" />
+      <br />
+      <br />
+      <Button type="danger" />
+      {/* <HomePage /> */}
     </div>
   );
 }
