@@ -2,11 +2,9 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 function Button(props) {
-  return (
-    <button className={`btn btn-${props.type} btn-${props.size}`}>
-      Click!
-    </button>
-  );
+  const classNames = `btn btn-${props.type} btn-${props.size}`;
+  
+  return <button className={classNames}>Click!</button>;
 }
 
 Button.propTypes = {
