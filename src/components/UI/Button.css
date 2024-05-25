@@ -44,6 +44,23 @@
 
 .btn-success {
   color: #fff;
-  background-color: #0dff00;
-  border-color: #00ff1a;
+  background-color: #0dff00ae;
+  border-color: #00ff1a8b;
+}
+
+/* size */
+
+.btn-xl {
+  padding: 20px 40px;
+  font-size: 18px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
 }
