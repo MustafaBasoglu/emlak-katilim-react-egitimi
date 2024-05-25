@@ -9,7 +9,7 @@ function ProductItem(props) {
         <img src={props.img} />
       </div>
       <div className="product-info">
-        <strong className="product-title">{props.title}</strong>
+        <strong className="product-title">{props.title.slice(0, 10)}...</strong>
         <span className="product-price">{props.price}₺</span>
       </div>
     </div>
