@@ -1,22 +1,59 @@
+import { useState } from "react";
 import Button from "../UI/Button";
 import "./AddNewProduct.css";
 
 function AddNewProduct() {
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState(0);
+  const formInputsValue = {
+    title,
+    image,
+    price,
+  };
+  console.log(formInputsValue);
+
+  function handleTitleChange(event) {
+    setTitle(event.target.value);
+  }
+
+  function handleImageChange(event) {
+    setImage(event.target.value);
+  }
+
+  function handlePriceChange(event) {
+    setPrice(event.target.value);
+  }
+
   return (
     <form className="product-form">
       <div className="product-input">
         <label>Title</label>
-        <input type="text" placeholder="Ürün ismi giriniz." />
+        <input
+          type="text"
+          onChange={handleTitleChange}
+          placeholder="Ürün ismi giriniz."
+        />
       </div>
       <div className="product-input">
         <label>Image</label>
-        <input type="text" placeholder="Ürün görseli giriniz." />
+        <input
+          type="text"
+          onChange={handleImageChange}
+          placeholder="Ürün görseli giriniz."
+        />
       </div>
       <div className="product-input">
         <label>Price</label>
-        <input type="text" placeholder="Ürün fiyatı giriniz." />
+        <input
+          type="text"
+          onChange={handlePriceChange}
+          placeholder="Ürün fiyatı giriniz."
+        />
       </div>
-      <Button size="sm" type="primary">Yeni Ürün Ekle</Button>
+      <Button size="sm" type="primary">
+        Yeni Ürün Ekle
+      </Button>
     </form>
   );
 }
