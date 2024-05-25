@@ -1,8 +1,9 @@
 import { useState } from "react";
+import Counter from "./Counter";
 
 function App() {
   const [title, setTitle] = useState("Mehmet");
-  
+
   let name = "Mehmet";
   console.log(name);
 
@@ -15,10 +16,7 @@ function App() {
   return (
     <div className="app">
       <h1>Hello App</h1>
-      <p id="paragraph">{title}</p>
-      <button id="btn" onClick={handleClick}>
-        İsmi değiştir!
-      </button>
+      <Counter />
     </div>
   );
 }
