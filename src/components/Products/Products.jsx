@@ -9,7 +9,6 @@ function Products() {
   return (
     <div className="products">
       <ProductItem
-        myName="Emin Başbayan"
         img={img}
         title={title}
         price={price}
