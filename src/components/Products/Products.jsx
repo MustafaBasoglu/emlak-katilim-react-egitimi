@@ -4,10 +4,12 @@ import AddNewProduct from "./AddNewProduct";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
 import "./Products.css";
+import Spinner from "../UI/Spinner";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowLoading, setIsShowLoading] = useState(false);
 
   function handleDeleteItem(productId) {
     const filteredProducts = products.filter((product) => {
@@ -18,6 +20,8 @@ function Products() {
   }
 
   async function fetchProducts() {
+    setProducts([]);
+    setIsShowLoading(true);
     try {
       const res = await fetch("https://fakestoreapi.com/products/");
       const data = await res.json();
@@ -27,6 +31,7 @@ function Products() {
       console.log(err);
     } finally {
       console.log("İşlem tamamlandı!");
+      setIsShowLoading(false);
     }
   }
 
@@ -46,6 +51,8 @@ function Products() {
       <Button size="lg" type="success" onClick={fetchProducts} className="mb-3">
         Fetch Products
       </Button>
+      <br />
+      <Spinner isShowLoading={isShowLoading} className="my-3" />
       <div className="products">
         {products.map((product) => {
           return (
