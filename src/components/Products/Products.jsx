@@ -7,6 +7,7 @@ import Modal from "../UI/Modal";
 
 function Products() {
   const [products, setProducts] = useState(productsData);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   function handleDeleteItem(productId) {
     const filteredProducts = products.filter((product) => {
@@ -18,9 +19,16 @@ function Products() {
 
   return (
     <div className="products-wrapper">
-      <AddNewProduct setProducts={setProducts} />
-      <Modal title={"Modal Title"}>
-        <strong>Modal Body</strong>
+      <AddNewProduct
+        setProducts={setProducts}
+        setIsShowModal={setIsShowModal}
+      />
+      <Modal
+        title={"Form Kontrolü"}
+        isShowModal={isShowModal}
+        setIsShowModal={setIsShowModal}
+      >
+        <strong className="text-danger">Tüm inputları doldurunuz!</strong>
       </Modal>
       <div className="products">
         {products.map((product) => {
