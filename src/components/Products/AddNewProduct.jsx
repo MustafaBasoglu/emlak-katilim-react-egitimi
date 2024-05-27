@@ -51,6 +51,16 @@ function AddNewProduct({ setProducts }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (
+      productData.title.trim().length === 0 ||
+      productData.image.trim().length === 0 ||
+      productData.desc.trim().length === 0 ||
+      productData.price.trim().length === 0
+    ) {
+      alert("Inputlar boş geçilemez!");
+      return;
+    }
+
     const { desc, ...rest } = productData;
 
     const newProduct = {
