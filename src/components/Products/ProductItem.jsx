@@ -12,7 +12,11 @@ function ProductItem(props) {
         <strong className="product-title">{props.title.slice(0, 10)}...</strong>
         <p className="product-desc">{props.desc.slice(0, 50)}₺</p>
         <span className="product-price">{props.price}₺</span>
-        <Button size="sm" type="danger" onClick={{}}>
+        <Button
+          size="sm"
+          type="danger"
+          onClick={() => props.handleDeleteItem(props.id)}
+        >
           DELETE
         </Button>
       </div>
@@ -25,6 +29,8 @@ ProductItem.propTypes = {
   img: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  handleDeleteItem: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default ProductItem;

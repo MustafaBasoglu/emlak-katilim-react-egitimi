@@ -7,6 +7,14 @@ import "./Products.css";
 function Products() {
   const [products, setProducts] = useState(productsData);
 
+  function handleDeleteItem(productId) {
+    const filteredProducts = products.filter((product) => {
+      return product.id !== productId;
+    });
+
+    setProducts(filteredProducts);
+  }
+
   return (
     <div className="products-wrapper">
       <AddNewProduct setProducts={setProducts} />
@@ -19,6 +27,8 @@ function Products() {
               title={product.title}
               price={product.price}
               desc={product.description}
+              id={product.id}
+              handleDeleteItem={handleDeleteItem}
             />
           );
         })}
