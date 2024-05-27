@@ -11,8 +11,11 @@ function AddNewProduct() {
   });
 
   function handleChange(event) {
-    // Computed Property Name
-    setProductData({ ...productData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setProductData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   return (
