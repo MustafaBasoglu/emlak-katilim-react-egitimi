@@ -31,13 +31,15 @@ const productInputs = [
   },
 ];
 
+const initialValues = {
+  title: "",
+  image: "",
+  desc: "",
+  price: "",
+};
+
 function AddNewProduct({ setProducts }) {
-  const [productData, setProductData] = useState({
-    title: "",
-    image: "",
-    desc: "",
-    price: 0,
-  });
+  const [productData, setProductData] = useState(initialValues);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -50,7 +52,7 @@ function AddNewProduct({ setProducts }) {
   function handleSubmit(e) {
     e.preventDefault();
     const { desc, ...rest } = productData;
-    
+
     const newProduct = {
       ...rest,
       id: Math.random(),
@@ -59,12 +61,19 @@ function AddNewProduct({ setProducts }) {
     };
 
     setProducts((prevState) => [newProduct, ...prevState]);
+
+    setProductData(initialValues);
   }
 
   return (
     <form className="product-form" onSubmit={handleSubmit}>
       {productInputs.map((input, index) => (
-        <ProductInput key={index} {...input} handleChange={handleChange} />
+        <ProductInput
+          key={index}
+          {...input}
+          handleChange={handleChange}
+          value={productData[input.name]}
+        />
       ))}
 
       <Button size="sm" type="primary">

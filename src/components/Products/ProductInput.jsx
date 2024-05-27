@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 
 function ProductInput(props) {
-  const { label, type, placeholder, name, handleChange } = props;
+  const { label, type, placeholder, name, value, handleChange } = props;
+  
   return (
     <div className="product-input">
       <label>{label}</label>
@@ -10,6 +11,7 @@ function ProductInput(props) {
         onChange={handleChange}
         placeholder={placeholder}
         name={name}
+        value={value}
       />
     </div>
   );
@@ -20,6 +22,7 @@ ProductInput.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
+  value: PropTypes.string,
   handleChange: PropTypes.func,
 };
 
