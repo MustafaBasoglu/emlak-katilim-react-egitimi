@@ -38,8 +38,6 @@ function AddNewProduct() {
     price: 0,
   });
 
-  console.log(productData);
-
   function handleChange(event) {
     const { name, value } = event.target;
     setProductData((prevState) => ({
@@ -48,8 +46,13 @@ function AddNewProduct() {
     }));
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(productData);
+  }
+
   return (
-    <form className="product-form">
+    <form className="product-form" onSubmit={handleSubmit}>
       {productInputs.map((input, index) => (
         <ProductInput key={index} {...input} handleChange={handleChange} />
       ))}
