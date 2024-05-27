@@ -23,11 +23,7 @@ function Products() {
           return (
             <ProductItem
               key={product.id}
-              img={product.image}
-              title={product.title}
-              price={product.price}
-              desc={product.description}
-              id={product.id}
+              {...product}
               handleDeleteItem={handleDeleteItem}
             />
           );
