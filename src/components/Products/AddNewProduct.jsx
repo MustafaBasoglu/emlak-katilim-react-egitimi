@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import ProductInput from "./ProductInput";
 import Button from "../UI/Button";
 import "./AddNewProduct.css";
@@ -30,7 +31,7 @@ const productInputs = [
   },
 ];
 
-function AddNewProduct() {
+function AddNewProduct({ setProducts }) {
   const [productData, setProductData] = useState({
     title: "",
     image: "",
@@ -48,7 +49,16 @@ function AddNewProduct() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(productData);
+    const { desc, ...rest } = productData;
+    
+    const newProduct = {
+      ...rest,
+      id: Math.random(),
+      description: desc,
+      price: Number(productData.price),
+    };
+
+    setProducts((prevState) => [newProduct, ...prevState]);
   }
 
   return (
@@ -63,5 +73,9 @@ function AddNewProduct() {
     </form>
   );
 }
+
+AddNewProduct.propTypes = {
+  setProducts: PropTypes.func,
+};
 
 export default AddNewProduct;
