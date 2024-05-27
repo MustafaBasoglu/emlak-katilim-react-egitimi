@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 function Button(props) {
-  const { type, size, onClick, children } = props;
-  const classNames = `btn btn-${type} btn-${size}`;
+  const { type, size, onClick, children, className } = props;
+  const classNames = `${className} btn btn-${type} btn-${size}`;
 
   return (
     <button className={classNames} onClick={onClick}>
@@ -17,6 +17,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(["xl", "lg", "sm"]).isRequired,
   children: PropTypes.node,
   onClick: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default Button;

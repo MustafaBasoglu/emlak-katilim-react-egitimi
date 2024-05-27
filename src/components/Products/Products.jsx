@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ProductItem from "./ProductItem";
-import { productsData } from "../../productsData";
 import AddNewProduct from "./AddNewProduct";
-import "./Products.css";
 import Modal from "../UI/Modal";
+import Button from "../UI/Button";
+import "./Products.css";
 
 function Products() {
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
 
   function handleDeleteItem(productId) {
@@ -15,6 +15,19 @@ function Products() {
     });
 
     setProducts(filteredProducts);
+  }
+
+  async function fetchProducts() {
+    try {
+      const res = await fetch("https://fakestoreapi.com/products/");
+      const data = await res.json();
+
+      setProducts(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log("İşlem tamamlandı!");
+    }
   }
 
   return (
@@ -30,6 +43,9 @@ function Products() {
       >
         <strong className="text-danger">Tüm inputları doldurunuz!</strong>
       </Modal>
+      <Button size="lg" type="success" onClick={fetchProducts} className="mb-3">
+        Fetch Products
+      </Button>
       <div className="products">
         {products.map((product) => {
           return (
