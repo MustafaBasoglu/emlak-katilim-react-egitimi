@@ -1,12 +1,18 @@
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 //! react componentleri kendine bağlı state ve props güncellendiğinde yeniden render olur!
 
-const Modal = ({ title, children, isShowModal, setIsShowModal }) => {
-  if (!isShowModal) {
-    return null;
-  }
+const Modal = ({ title, children, setIsShowModal }) => {
+
+  useEffect(() => {
+    
+    //* clean-up function - ekrandan kaldırıldığında çalışır
+    return () => {
+      console.log("modal DOM'dan kaldırıldı!");
+    };
+  }, []);
 
   return createPortal(
     <div className="modal d-inline-flex flex-column justify-content-center align-items-center">
@@ -47,7 +53,6 @@ const Modal = ({ title, children, isShowModal, setIsShowModal }) => {
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  isShowModal: PropTypes.bool.isRequired,
   setIsShowModal: PropTypes.func.isRequired,
 };
 

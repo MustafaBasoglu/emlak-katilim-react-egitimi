@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductItem from "./ProductItem";
 import AddNewProduct from "./AddNewProduct";
 import Modal from "../UI/Modal";
@@ -35,19 +35,26 @@ function Products() {
     }
   }
 
+  // component ilk yüklendiğinde
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="products-wrapper">
       <AddNewProduct
         setProducts={setProducts}
         setIsShowModal={setIsShowModal}
       />
-      <Modal
-        title={"Form Kontrolü"}
-        isShowModal={isShowModal}
-        setIsShowModal={setIsShowModal}
-      >
-        <strong className="text-danger">Tüm inputları doldurunuz!</strong>
-      </Modal>
+      {isShowModal && (
+        <Modal
+          title={"Form Kontrolü"}
+          setIsShowModal={setIsShowModal}
+        >
+          <strong className="text-danger">Tüm inputları doldurunuz!</strong>
+        </Modal>
+      )}
+
       <Button size="lg" type="success" onClick={fetchProducts} className="mb-3">
         Fetch Products
       </Button>
