@@ -15,6 +15,7 @@ function Products() {
               img={product.image}
               title={product.title}
               price={product.price}
+              desc={product.description}
             />
           );
         })}

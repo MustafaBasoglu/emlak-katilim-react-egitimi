@@ -10,6 +10,7 @@ function ProductItem(props) {
       </div>
       <div className="product-info">
         <strong className="product-title">{props.title.slice(0, 10)}...</strong>
+        <p className="product-desc">{props.desc.slice(0, 50)}₺</p>
         <span className="product-price">{props.price}₺</span>
       </div>
     </div>
@@ -19,6 +20,7 @@ function ProductItem(props) {
 ProductItem.propTypes = {
   title: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired
 }
 
