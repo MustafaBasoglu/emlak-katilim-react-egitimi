@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
 //! react componentleri kendine bağlı state ve props güncellendiğinde yeniden render olur!
@@ -7,7 +8,7 @@ const Modal = ({ title, children, isShowModal, setIsShowModal }) => {
     return null;
   }
 
-  return (
+  return createPortal(
     <div className="modal d-inline-flex flex-column justify-content-center align-items-center">
       <div className="modal-content bg-dark z-3 position-relative w-50">
         <div className="modal-header">
@@ -38,7 +39,8 @@ const Modal = ({ title, children, isShowModal, setIsShowModal }) => {
         className="w-100 h-100 position-absolute top-0 left-0 bg-danger opacity-25 z-0"
         onClick={() => setIsShowModal(false)}
       ></div>
-    </div>
+    </div>,
+    document.getElementById("modals")
   );
 };
 
