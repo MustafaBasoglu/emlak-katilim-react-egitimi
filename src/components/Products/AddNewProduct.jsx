@@ -1,6 +1,34 @@
 import { useState } from "react";
+import ProductInput from "./ProductInput";
 import Button from "../UI/Button";
 import "./AddNewProduct.css";
+
+const productInputs = [
+  {
+    label: "Title",
+    type: "text",
+    placeholder: "Ürün ismi giriniz.",
+    name: "title",
+  },
+  {
+    label: "Image",
+    type: "text",
+    placeholder: "Ürün görseli giriniz.",
+    name: "image",
+  },
+  {
+    label: "Description",
+    type: "text",
+    placeholder: "Ürün açıklaması giriniz.",
+    name: "desc",
+  },
+  {
+    label: "Price",
+    type: "number",
+    placeholder: "Ürün fiyatı giriniz.",
+    name: "price",
+  },
+];
 
 function AddNewProduct() {
   const [productData, setProductData] = useState({
@@ -9,6 +37,8 @@ function AddNewProduct() {
     desc: "",
     price: 0,
   });
+
+  console.log(productData);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -20,42 +50,10 @@ function AddNewProduct() {
 
   return (
     <form className="product-form">
-      <div className="product-input">
-        <label>Title</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Ürün ismi giriniz."
-          name="title"
-        />
-      </div>
-      <div className="product-input">
-        <label>Image</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Ürün görseli giriniz."
-          name="image"
-        />
-      </div>
-      <div className="product-input">
-        <label>Description</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Ürün açıklaması giriniz."
-          name="desc"
-        />
-      </div>
-      <div className="product-input">
-        <label>Price</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Ürün fiyatı giriniz."
-          name="price"
-        />
-      </div>
+      {productInputs.map((input, index) => (
+        <ProductInput key={index} {...input} handleChange={handleChange} />
+      ))}
+
       <Button size="sm" type="primary">
         Yeni Ürün Ekle
       </Button>
