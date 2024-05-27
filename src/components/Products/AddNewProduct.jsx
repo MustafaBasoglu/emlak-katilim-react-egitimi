@@ -3,33 +3,16 @@ import Button from "../UI/Button";
 import "./AddNewProduct.css";
 
 function AddNewProduct() {
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [desc, setDesc] = useState("");
-  const [price, setPrice] = useState(0);
-  const formInputsValue = {
-    title,
-    image,
-    desc,
-    price,
-  };
+  const [productData, setProductData] = useState({
+    title: "",
+    image: "",
+    desc: "",
+    price: 0,
+  });
 
-  console.log(formInputsValue);
-
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  function handleImageChange(event) {
-    setImage(event.target.value);
-  }
-
-  function handleDescChange(event) {
-    setDesc(event.target.value);
-  }
-
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
+  function handleChange(event) {
+    // Computed Property Name
+    setProductData({ ...productData, [event.target.name]: event.target.value });
   }
 
   return (
@@ -38,32 +21,36 @@ function AddNewProduct() {
         <label>Title</label>
         <input
           type="text"
-          onChange={handleTitleChange}
+          onChange={handleChange}
           placeholder="Ürün ismi giriniz."
+          name="title"
         />
       </div>
       <div className="product-input">
         <label>Image</label>
         <input
           type="text"
-          onChange={handleImageChange}
+          onChange={handleChange}
           placeholder="Ürün görseli giriniz."
+          name="image"
         />
       </div>
       <div className="product-input">
         <label>Description</label>
         <input
           type="text"
-          onChange={handleDescChange}
+          onChange={handleChange}
           placeholder="Ürün açıklaması giriniz."
+          name="desc"
         />
       </div>
       <div className="product-input">
         <label>Price</label>
         <input
           type="text"
-          onChange={handlePriceChange}
+          onChange={handleChange}
           placeholder="Ürün fiyatı giriniz."
+          name="price"
         />
       </div>
       <Button size="sm" type="primary">
