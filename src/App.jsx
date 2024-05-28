@@ -8,6 +8,7 @@ import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import MainLayout from "./layouts/MainLayout";
 import "react-toastify/dist/ReactToastify.css";
+import Error404 from "./pages/Error404";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -16,6 +17,7 @@ function App() {
     {
       path: "/",
       element: <MainLayout />,
+      errorElement: <Error404 />,
       children: [
         { path: "/", element: <HomePage /> },
         { path: "/products", element: <ProductsPage /> },
