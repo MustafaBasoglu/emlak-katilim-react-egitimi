@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { ThemeContext } from "../../context/ThemeContext";
+import { themes } from "../../context/ThemeProvider";
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
-  
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,6 +57,15 @@ const Header = () => {
                     <span className="visually-hidden">unread messages</span>
                   </span>
                 </a>
+              </li>
+              <li className="nav-item fs-4">
+                <span className="nav-link" onClick={toggleTheme}>
+                  {theme === themes.light ? (
+                    <i className="bi bi-toggle-off"></i>
+                  ) : (
+                    <i className="bi bi-toggle-on"></i>
+                  )}
+                </span>
               </li>
             </ul>
           </div>
