@@ -3,19 +3,26 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
-import "react-toastify/dist/ReactToastify.css";
 import ProductsPage from "./pages/ProductsPage";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
+import MainLayout from "./layouts/MainLayout";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { theme } = useContext(ThemeContext);
 
   const router = createBrowserRouter([
-    { path: "/", element: <HomePage /> },
-    { path: "/products", element: <ProductsPage /> },
-    { path: "/about", element: <AboutPage /> },
-    { path: "/cart", element: <CartPage /> },
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        { path: "/", element: <HomePage /> },
+        { path: "/products", element: <ProductsPage /> },
+        { path: "/about", element: <AboutPage /> },
+        { path: "/cart", element: <CartPage /> },
+      ],
+    },
   ]);
 
   return (
