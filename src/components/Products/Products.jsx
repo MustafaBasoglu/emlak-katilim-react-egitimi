@@ -6,7 +6,7 @@ import Button from "../UI/Button";
 import "./Products.css";
 import Spinner from "../UI/Spinner";
 
-function Products() {
+function Products({ setCartItem }) {
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowLoading, setIsShowLoading] = useState(false);
@@ -47,10 +47,7 @@ function Products() {
         setIsShowModal={setIsShowModal}
       />
       {isShowModal && (
-        <Modal
-          title={"Form Kontrolü"}
-          setIsShowModal={setIsShowModal}
-        >
+        <Modal title={"Form Kontrolü"} setIsShowModal={setIsShowModal}>
           <strong className="text-danger">Tüm inputları doldurunuz!</strong>
         </Modal>
       )}
@@ -67,6 +64,7 @@ function Products() {
               key={product.id}
               {...product}
               handleDeleteItem={handleDeleteItem}
+              setCartItem={setCartItem}
             />
           );
         })}

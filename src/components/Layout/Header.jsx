@@ -1,7 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
 
-const Header = (props) => {
+const Header = ({ cartItems }) => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -47,7 +46,7 @@ const Header = (props) => {
                   <i className="bi bi-cart"></i>
 
                   <span className="position-absolute top-4 start-100 translate-middle badge rounded-pill bg-danger">
-                    {0}
+                    {cartItems.length}
                     <span className="visually-hidden">unread messages</span>
                   </span>
                 </a>
@@ -60,6 +59,8 @@ const Header = (props) => {
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  cartItems: PropTypes.array,
+};
 
 export default Header;

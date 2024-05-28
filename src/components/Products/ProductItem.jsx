@@ -10,8 +10,20 @@ function ProductItem(props) {
     description: desc,
     price,
     handleDeleteItem,
+    setCartItem,
   } = props;
-  
+
+  function addToCart() {
+    const product = {
+      id,
+      img,
+      desc,
+      price,
+    };
+
+    setCartItem((prevCartItems) => [product, ...prevCartItems]);
+  }
+
   return (
     <div className="product-item">
       <div className="product-image">
@@ -21,6 +33,14 @@ function ProductItem(props) {
         <strong className="product-title">{title.slice(0, 10)}...</strong>
         <p className="product-desc">{desc.slice(0, 50)}₺</p>
         <span className="product-price">{price}₺</span>
+        <Button
+          size="sm"
+          type="primary"
+          className={"mb-2 mt-1"}
+          onClick={addToCart}
+        >
+          ADD TO CART
+        </Button>
         <Button size="sm" type="danger" onClick={() => handleDeleteItem(id)}>
           DELETE
         </Button>
@@ -36,6 +56,7 @@ ProductItem.propTypes = {
   price: PropTypes.number.isRequired,
   handleDeleteItem: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  setCartItem: PropTypes.func,
 };
 
 export default ProductItem;
