@@ -1,39 +1,16 @@
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import ProductItem from "../components/Products/ProductItem";
+
 const CartPage = () => {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <div className="cart-page">
       <h1>Cart Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorum
-        repudiandae quas minima voluptates itaque quaerat voluptatem
-        reprehenderit, nisi nulla accusantium odit error neque maiores dolores.
-        Magni, quo ratione? Magnam, dolorum excepturi? Inventore magni quo
-        tempore tempora quibusdam fugit ex. Veritatis, magni vel odit temporibus
-        ex in necessitatibus neque?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorum
-        repudiandae quas minima voluptates itaque quaerat voluptatem
-        reprehenderit, nisi nulla accusantium odit error neque maiores dolores.
-        Magni, quo ratione? Magnam, dolorum excepturi? Inventore magni quo
-        tempore tempora quibusdam fugit ex. Veritatis, magni vel odit temporibus
-        ex in necessitatibus neque?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorum
-        repudiandae quas minima voluptates itaque quaerat voluptatem
-        reprehenderit, nisi nulla accusantium odit error neque maiores dolores.
-        Magni, quo ratione? Magnam, dolorum excepturi? Inventore magni quo
-        tempore tempora quibusdam fugit ex. Veritatis, magni vel odit temporibus
-        ex in necessitatibus neque?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorum
-        repudiandae quas minima voluptates itaque quaerat voluptatem
-        reprehenderit, nisi nulla accusantium odit error neque maiores dolores.
-        Magni, quo ratione? Magnam, dolorum excepturi? Inventore magni quo
-        tempore tempora quibusdam fugit ex. Veritatis, magni vel odit temporibus
-        ex in necessitatibus neque?
-      </p>
+      {cartItems.map((item) => (
+        <ProductItem key={item.id} />
+      ))}
     </div>
   );
 };
