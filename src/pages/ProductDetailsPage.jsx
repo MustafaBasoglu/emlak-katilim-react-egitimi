@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Skeleton from "../components/UI/Skeleton";
 
 const ProductDetailsPage = () => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
   const { productId } = useParams();
 
   useEffect(() => {
@@ -10,6 +11,10 @@ const ProductDetailsPage = () => {
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [productId]);
+
+  if (!product) {
+    return <Skeleton />;
+  }
 
   return (
     <div className="product-details-page">
