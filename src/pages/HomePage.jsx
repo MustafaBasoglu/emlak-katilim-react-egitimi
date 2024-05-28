@@ -1,10 +1,10 @@
 import Products from "../components/Products/Products";
 
-function HomePage({ setCartItem }) {
+function HomePage() {
   return (
     <div className="home-page">
       <h1>Home Page</h1>
-      <Products setCartItem={setCartItem} />
+      <Products />
     </div>
   );
 }

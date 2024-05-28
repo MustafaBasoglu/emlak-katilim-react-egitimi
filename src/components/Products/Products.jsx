@@ -6,7 +6,7 @@ import Button from "../UI/Button";
 import "./Products.css";
 import Spinner from "../UI/Spinner";
 
-function Products({ setCartItem }) {
+function Products() {
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowLoading, setIsShowLoading] = useState(false);
@@ -64,7 +64,6 @@ function Products({ setCartItem }) {
               key={product.id}
               {...product}
               handleDeleteItem={handleDeleteItem}
-              setCartItem={setCartItem}
             />
           );
         })}

@@ -1,14 +1,19 @@
-// import { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "./CartContext";
 
 const CartProvider = ({ children }) => {
-  //   const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
+  function addToCart(product) {
+    setCartItems((prevCartItems) => [product, ...prevCartItems]);
+  }
 
   return (
     <CartContext.Provider
       value={{
-        fullName: "Emin Başbayan",
+        cartItems,
+        addToCart
       }}
     >
       {children}
