@@ -5,7 +5,11 @@ const MainLayout = () => {
   return (
     <div className="main-layout">
       <Header />
-      <section>
+      <section
+        style={{
+          paddingTop: "80px",
+        }}
+      >
         <Outlet />
       </section>
       <footer>Footer</footer>

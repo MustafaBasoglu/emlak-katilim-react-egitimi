@@ -10,7 +10,7 @@ const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <header>
+    <header className="position-fixed w-100 container p-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
