@@ -4,6 +4,7 @@ import { CartContext } from "./CartContext";
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [totals, setTotals] = useState(0);
 
   function addToCart(product) {
     const findCartItem = cartItems.find((item) => item.id === product.id);
@@ -21,9 +22,10 @@ const CartProvider = ({ children }) => {
         ...prevCartItems,
       ]);
     }
+    setTotals(
+      cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
+    );
   }
-
-  console.log(cartItems);
 
   return (
     <CartContext.Provider
