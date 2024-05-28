@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import MainLayout from "./layouts/MainLayout";
 import "react-toastify/dist/ReactToastify.css";
 import Error404 from "./pages/Error404";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -23,6 +24,7 @@ function App() {
         { path: "/products", element: <ProductsPage /> },
         { path: "/about", element: <AboutPage /> },
         { path: "/cart", element: <CartPage /> },
+        { path: "/product/:productId", element: <ProductDetailsPage /> },
       ],
     },
   ]);

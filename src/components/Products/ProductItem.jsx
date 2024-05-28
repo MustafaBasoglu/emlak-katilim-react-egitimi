@@ -3,11 +3,21 @@ import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import { CartContext } from "../../context/CartContext";
 import "./ProductItem.css";
+import { useNavigate } from "react-router-dom";
 
 function ProductItem(props) {
-  const { id, image, title, description, price, handleDeleteItem, cart, quantity } =
-    props;
+  const {
+    id,
+    image,
+    title,
+    description,
+    price,
+    handleDeleteItem,
+    cart,
+    quantity,
+  } = props;
   const { addToCart, deleteFromCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   return (
     <div className="product-item">
@@ -15,13 +25,22 @@ function ProductItem(props) {
         <img src={image} />
       </div>
       <div className="product-info">
-        <strong className="product-title">{title.slice(0, 10)}...</strong>
+        <strong
+          className="product-title"
+          onClick={() => navigate(`/product/${id}`)}
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          {title.slice(0, 10)}...
+        </strong>
         <p className="product-desc">{description.slice(0, 50)}₺</p>
-        <span className="product-price">{price}₺ x {quantity}</span>
-    
+        <span className="product-price">
+          {price}₺ x {quantity}
+        </span>
+
         {cart ? (
-          <Button size="sm" type="danger" onClick={() => 
-          deleteFromCart(id)}>
+          <Button size="sm" type="danger" onClick={() => deleteFromCart(id)}>
             DELETE FROM CART
           </Button>
         ) : (
