@@ -27,11 +27,16 @@ const CartProvider = ({ children }) => {
     );
   }
 
+  function deleteFromCart(id) {
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  }
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         addToCart,
+        deleteFromCart
       }}
     >
       {children}
