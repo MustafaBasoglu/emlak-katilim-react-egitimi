@@ -5,6 +5,7 @@ import { ThemeContext } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Layout/Header";
 import "react-toastify/dist/ReactToastify.css";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -13,6 +14,10 @@ function App() {
     {
       path: "/",
       element: <HomePage />
+    },
+    {
+      path: "/products",
+      element: <ProductsPage />
     }
   ])
 
