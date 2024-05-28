@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
-import Header from "./components/Layout/Header";
 import "react-toastify/dist/ReactToastify.css";
 import ProductsPage from "./pages/ProductsPage";
 import AboutPage from "./pages/AboutPage";
@@ -28,7 +27,6 @@ function App() {
       }}
     >
       <main className="container">
-        <Header />
         <RouterProvider router={router} />
       </main>
       <ToastContainer />

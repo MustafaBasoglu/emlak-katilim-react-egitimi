@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { ThemeContext } from "../../context/ThemeContext";
 import { themes } from "../../context/ThemeProvider";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
@@ -12,9 +13,9 @@ const Header = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             My Website
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,34 +30,33 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto fs-5">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link to={"/"} className="nav-link active">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/products">
+                  Products
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Services
-                </a>
+                <Link className="nav-link" to="/cart">
+                  Cart
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Contact
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link position-relative" href="#">
+                <Link className="nav-link position-relative" to="/cart">
                   <i className="bi bi-cart"></i>
 
                   <span className="position-absolute top-4 start-100 translate-middle badge rounded-pill bg-danger">
                     {cartItems.length}
-                    <span className="visually-hidden">unread messages</span>
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item fs-4">
                 <span className="nav-link" onClick={toggleTheme}>
