@@ -5,6 +5,7 @@ import Error404 from "../pages/Error404";
 import HomePage from "../pages/HomePage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import ProductsPage from "../pages/ProductsPage";
+import LoginPage from "../pages/auth/LoginPage";
 import { fetchWithTimeout } from "../utils/fetchWithTimeout";
 
 export const mainRoutes = [
@@ -44,6 +45,7 @@ export const mainRoutes = [
       { path: "/about", element: <AboutPage /> },
       { path: "/cart", element: <CartPage /> },
       { path: "/product/:productId", element: <ProductDetailsPage /> },
+      { path: "/login", element: <LoginPage /> },
     ],
   },
 ];
