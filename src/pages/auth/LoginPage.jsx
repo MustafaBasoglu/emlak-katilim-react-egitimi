@@ -1,22 +1,37 @@
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/slices/authSlice";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email("Geçerli bir email girin.")
+    .required("Email gerekli"),
+  password: Yup.string()
+    .min(6, "Şifre en az 6 karakter olmalı.")
+    .required("Şifre gerekli."),
+});
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const user = { email, password };
-    dispatch(loginUser(user));
+  function onSubmit(data) {
+    dispatch(loginUser(data));
     toast.success("Giriş Başarılı! Ana sayfaya yönlendiriliyorsunuz!", {
       autoClose: 1300,
-      position: "bottom-right"
+      position: "bottom-right",
     });
     setTimeout(() => {
       navigate("/");
@@ -31,7 +46,7 @@ const LoginPage = () => {
           style={{ maxWidth: "400px", width: "100%" }}
         >
           <h2 className="text-center mb-4">Giriş Yap</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email adresi
@@ -41,9 +56,12 @@ const LoginPage = () => {
                 className="form-control"
                 name="email"
                 placeholder="Emailinizi girin"
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email")}
+                onBlur={() => trigger("email")}
               />
-              <span className="text-danger">Email input zorunlu!</span>
+              {errors.email && (
+                <span className="text-danger">{errors.email.message}</span>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
@@ -54,9 +72,12 @@ const LoginPage = () => {
                 className="form-control"
                 name="password"
                 placeholder="Şifrenizi girin"
-                onChange={(e) => setPassword(e.target.value)}
+                {...register("password")}
+                onBlur={() => trigger("password")}
               />
-               <span className="text-danger">Password input zorunlu!</span>
+              {errors.password && (
+                <span className="text-danger">{errors.password.message}</span>
+              )}
             </div>
             <div className="d-grid">
               <button type="submit" className="btn btn-primary btn-block">
