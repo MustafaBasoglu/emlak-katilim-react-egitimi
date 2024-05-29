@@ -2,77 +2,13 @@ import { useContext } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "./context/ThemeContext";
-import HomePage from "./pages/HomePage";
-import ProductsPage from "./pages/ProductsPage";
-import AboutPage from "./pages/AboutPage";
-import CartPage from "./pages/CartPage";
-import MainLayout from "./layouts/MainLayout";
+import { mainRoutes, adminRoutes } from "./routes/routes.js";
 import "react-toastify/dist/ReactToastify.css";
-import Error404 from "./pages/Error404";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
-import { fetchWithTimeout } from "./utils/fetchWithTimeout";
-import AdminPage from "./pages/admin/AdminPage";
-import AdminLayout from "./layouts/AdminLayout";
-import AdminUsersPage from "./pages/admin/UsersPage";
 
 function App() {
   const { theme } = useContext(ThemeContext);
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout />,
-      errorElement: <Error404 />,
-      children: [
-        {
-          path: "/",
-          element: <HomePage />,
-          errorElement: <Error404 />,
-          loader: async () => {
-            try {
-              const res = await fetchWithTimeout(
-                "https://jsonplaceholder.typicode.com/users",
-                {},
-                5000
-              );
-              const data = await res.json();
-
-              if (res.ok) {
-                return {
-                  name: "Emin Başbayan",
-                  users: data,
-                };
-              } else {
-                throw new Error("Failed to fetch users");
-              }
-            } catch (err) {
-              console.log(err);
-              return err;
-            }
-          },
-        },
-        { path: "/products", element: <ProductsPage /> },
-        { path: "/about", element: <AboutPage /> },
-        { path: "/cart", element: <CartPage /> },
-        { path: "/product/:productId", element: <ProductDetailsPage /> },
-      ],
-    },
-    {
-      path: "/admin",
-      element: <AdminLayout />,
-      errorElement: <Error404 />,
-      children: [
-       {
-        index: true,
-        element: <AdminPage />
-       },
-       {
-        path: "users",
-        element: <AdminUsersPage />,
-       },
-      ]
-    }
-  ]);
+  const router = createBrowserRouter([...mainRoutes, ...adminRoutes]);
 
   return (
     <div
