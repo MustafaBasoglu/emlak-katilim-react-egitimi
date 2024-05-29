@@ -3,19 +3,27 @@ import { CartContext } from "../context/CartContext";
 import ProductItem from "../components/Products/ProductItem";
 
 const CartPage = () => {
-  const { cartItems } = useContext(CartContext);
-  console.log(cartItems);
+  const { cartItems, total } = useContext(CartContext);
+
   return (
-    <div className="cart-page">
-      <h1>Cart Page</h1>
-      {cartItems.length > 0 ? <div className="row">
-        {cartItems.map((item) => (
-          <div className="col-3" key={item.id}>
-            <ProductItem  {...item} cart />
+    <div className="container cart-page mt-5">
+      <h1 className="mb-4">Cart Page</h1>
+      {cartItems.length > 0 ? (
+        <>
+          <div className="row">
+            {cartItems.map((item) => (
+              <div className="col-md-3 mb-4" key={item.id}>
+                <ProductItem {...item} cart />
+              </div>
+            ))}
           </div>
-        ))}
-      </div> : <h3>Sepette hiç ürün yok!</h3> }
-      
+          <div className="mt-4">
+            <h2 className="text-end">Total: ${total.toFixed(2)}</h2>
+          </div>
+        </>
+      ) : (
+        <h3>Sepette hiç ürün yok!</h3>
+      )}
     </div>
   );
 };

@@ -1,42 +1,26 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "./CartContext";
+import { cartReducer, initialState } from "./reducers/cartReducer";
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [totals, setTotals] = useState(0);
+  const [state, dispatch] = useReducer(cartReducer, initialState);
 
   function addToCart(product) {
-    const findCartItem = cartItems.find((item) => item.id === product.id);
-    if (findCartItem) {
-      setCartItems((prevCartItems) =>
-        prevCartItems.map((item) =>
-          item.id === findCartItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      setCartItems((prevCartItems) => [
-        { ...product, quantity: 1 },
-        ...prevCartItems,
-      ]);
-    }
-    setTotals(
-      cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
-    );
+    dispatch({ type: "ADD_TO_CART", payload: product });
   }
 
   function deleteFromCart(id) {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+    dispatch({ type: "DELETE_FROM_CART", payload: id });
   }
 
   return (
     <CartContext.Provider
       value={{
-        cartItems,
+        cartItems: state.cartItems,
+        total: state.total,
         addToCart,
-        deleteFromCart
+        deleteFromCart,
       }}
     >
       {children}
