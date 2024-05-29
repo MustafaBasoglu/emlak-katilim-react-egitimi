@@ -1,0 +1,13 @@
+const AdminUsersPage = () => {
+  return (
+    <div className='admin-users-page'>
+        <h1>AdminUsersPage</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum esse maiores excepturi voluptatum. Illum totam quod facere molestiae iste nisi ratione eos, dicta vero sunt, at molestias nemo ipsa maiores, culpa ipsum voluptatum quisquam? Minus voluptatem fuga necessitatibus reprehenderit autem dolorem praesentium delectus non cum ratione qui quae est, aspernatur voluptatibus suscipit laboriosam veniam alias! Modi at illum non unde, dolorem vitae reprehenderit obcaecati? Placeat, repellat ipsam. Nesciunt possimus obcaecati sit, fugit exercitationem est unde deserunt sequi, ipsam assumenda voluptates!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum esse maiores excepturi voluptatum. Illum totam quod facere molestiae iste nisi ratione eos, dicta vero sunt, at molestias nemo ipsa maiores, culpa ipsum voluptatum quisquam? Minus voluptatem fuga necessitatibus reprehenderit autem dolorem praesentium delectus non cum ratione qui quae est, aspernatur voluptatibus suscipit laboriosam veniam alias! Modi at illum non unde, dolorem vitae reprehenderit obcaecati? Placeat, repellat ipsam. Nesciunt possimus obcaecati sit, fugit exercitationem est unde deserunt sequi, ipsam assumenda voluptates!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum esse maiores excepturi voluptatum. Illum totam quod facere molestiae iste nisi ratione eos, dicta vero sunt, at molestias nemo ipsa maiores, culpa ipsum voluptatum quisquam? Minus voluptatem fuga necessitatibus reprehenderit autem dolorem praesentium delectus non cum ratione qui quae est, aspernatur voluptatibus suscipit laboriosam veniam alias! Modi at illum non unde, dolorem vitae reprehenderit obcaecati? Placeat, repellat ipsam. Nesciunt possimus obcaecati sit, fugit exercitationem est unde deserunt sequi, ipsam assumenda voluptates!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum esse maiores excepturi voluptatum. Illum totam quod facere molestiae iste nisi ratione eos, dicta vero sunt, at molestias nemo ipsa maiores, culpa ipsum voluptatum quisquam? Minus voluptatem fuga necessitatibus reprehenderit autem dolorem praesentium delectus non cum ratione qui quae est, aspernatur voluptatibus suscipit laboriosam veniam alias! Modi at illum non unde, dolorem vitae reprehenderit obcaecati? Placeat, repellat ipsam. Nesciunt possimus obcaecati sit, fugit exercitationem est unde deserunt sequi, ipsam assumenda voluptates!</p>
+    </div>
+  )
+}
+
+export default AdminUsersPage

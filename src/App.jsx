@@ -12,6 +12,8 @@ import Error404 from "./pages/Error404";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import { fetchWithTimeout } from "./utils/fetchWithTimeout";
 import AdminPage from "./pages/admin/AdminPage";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminUsersPage from "./pages/admin/UsersPage";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -53,9 +55,23 @@ function App() {
         { path: "/about", element: <AboutPage /> },
         { path: "/cart", element: <CartPage /> },
         { path: "/product/:productId", element: <ProductDetailsPage /> },
-        { path: "/admin", element: <AdminPage /> },
       ],
     },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      errorElement: <Error404 />,
+      children: [
+       {
+        index: true,
+        element: <AdminPage />
+       },
+       {
+        path: "users",
+        element: <AdminUsersPage />,
+       },
+      ]
+    }
   ]);
 
   return (
