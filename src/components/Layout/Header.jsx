@@ -37,6 +37,16 @@ const Header = () => {
             <ul className="navbar-nav ms-auto fs-5">
               <li className="nav-item">
                 <NavLink
+                  to={"/admin"}
+                  className={({ isActive }) =>
+                    `nav-link ${isActive && "active"}`
+                  }
+                >
+                  Admin
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
                   to={"/"}
                   className={({ isActive }) =>
                     `nav-link ${isActive && "active"}`

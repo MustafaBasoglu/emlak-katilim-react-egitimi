@@ -28,7 +28,7 @@ const LoginPage = () => {
   });
 
   function onSubmit(data) {
-    dispatch(loginUser(data));
+    dispatch(loginUser({ ...data, role: "admin" }));
     toast.success("Giriş Başarılı! Ana sayfaya yönlendiriliyorsunuz!", {
       autoClose: 1300,
       position: "bottom-right",
