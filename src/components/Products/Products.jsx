@@ -5,14 +5,16 @@ import Modal from "../UI/Modal";
 import "./Products.css";
 import Spinner from "../UI/Spinner";
 import useFetchData from "../../hooks/FetchData";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduts } from "../../redux/slices/productSlice";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
-  const { data, isLoading, error } = useFetchData(
-    "https://fakestoreapi.com/products"
-  );
-
+  const { productData, loading, error } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  console.log(loading);
+  console.log(productData);
   function handleDeleteItem(productId) {
     const filteredProducts = products.filter((product) => {
       return product.id !== productId;
@@ -23,10 +25,10 @@ function Products() {
 
   // component ilk yüklendiğinde
   useEffect(() => {
-    if (data) {
-      setProducts(data);
+    if (loading === "idle") {
+      dispatch(fetchProduts());
     }
-  }, [data]);
+  }, [dispatch, loading]);
 
   return (
     <div className="products-wrapper">
@@ -40,11 +42,11 @@ function Products() {
         </Modal>
       )}
       <br />
-      <Spinner isShowLoading={isLoading} className="my-3" />
+      {/* <Spinner isShowLoading={loading} className="my-3" /> */}
       <br />
       {error && <strong>Error loading data!</strong>}
       <div className="products">
-        {products.map((product) => {
+        {productData.map((product) => {
           return (
             <ProductItem
               key={product.id}
