@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 
 const Error404 = () => {
   const navigate = useNavigate();
+  const error = useRouteError();
+  console.error(error);
 
   return (
     <div className="d-flex align-items-center justify-content-center vh-100">

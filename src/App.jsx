@@ -20,7 +20,31 @@ function App() {
       element: <MainLayout />,
       errorElement: <Error404 />,
       children: [
-        { path: "/", element: <HomePage /> },
+        {
+          path: "/",
+          element: <HomePage />,
+          errorElement: <Error404 />,
+          loader: async () => {
+            try {
+              const res = await fetch(
+                "https://jsonplaceholder.typicode.com/users"
+              );
+              const data = await res.json();
+
+              if (res.ok) {
+                return {
+                  name: "Emin Başbayan",
+                  users: data,
+                };
+              } else {
+                throw new Error("Failed to fetch users");
+              }
+            } catch (err) {
+              console.log(err);
+              return err;
+            }
+          },
+        },
         { path: "/products", element: <ProductsPage /> },
         { path: "/about", element: <AboutPage /> },
         { path: "/cart", element: <CartPage /> },
