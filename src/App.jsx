@@ -10,6 +10,7 @@ import MainLayout from "./layouts/MainLayout";
 import "react-toastify/dist/ReactToastify.css";
 import Error404 from "./pages/Error404";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import { fetchWithTimeout } from "./utils/fetchWithTimeout";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -26,8 +27,10 @@ function App() {
           errorElement: <Error404 />,
           loader: async () => {
             try {
-              const res = await fetch(
-                "https://jsonplaceholder.typicode.com/users"
+              const res = await fetchWithTimeout(
+                "https://jsonplaceholder.typicode.com/users",
+                {},
+                5000
               );
               const data = await res.json();
 
