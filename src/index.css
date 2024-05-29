@@ -1,4 +1,14 @@
-body{
-    background-color: #000;
-    color: #fff;
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.light {
+  background-color: #fff;
+  color: #000;
 }

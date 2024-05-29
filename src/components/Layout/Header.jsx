@@ -1,10 +1,14 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../../redux/slices/themeSlice";
 
 const Header = () => {
-  const { cartItems } = useSelector((state)=> state.cart);
-  // const { theme, toggleTheme } = useContext(ThemeContext);
+  const { cartItems } = useSelector((state) => state.cart);
+  const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+
+
   return (
     <header className="position-fixed w-100 container p-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,15 +55,18 @@ const Header = () => {
                   </span>
                 </Link>
               </li>
-              {/* <li className="nav-item fs-4">
-                <span className="nav-link" onClick={toggleTheme}>
-                  {theme === themes.light ? (
+              <li className="nav-item fs-4">
+                <span
+                  className="nav-link"
+                  onClick={() => dispatch(toggleTheme())}
+                >
+                  {theme === "light" ? (
                     <i className="bi bi-toggle-off"></i>
                   ) : (
                     <i className="bi bi-toggle-on"></i>
                   )}
                 </span>
-              </li> */}
+              </li>
             </ul>
           </div>
         </div>
