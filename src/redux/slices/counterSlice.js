@@ -6,8 +6,8 @@ const counterSlice = createSlice({
     count: 0,
   },
   reducers: {
-    arttir: (state) => {
-      state.count += 1;
+    arttir: (state, { payload: { number } }) => {
+      state.count += number;
     },
     azalt: (state) => {
       state.count -= 1;

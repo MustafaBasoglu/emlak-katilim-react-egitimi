@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Counter from "../components/Counter";
 
 function HomePage() {
   const { users } = useLoaderData();
@@ -6,8 +7,9 @@ function HomePage() {
   return (
     <div className="home-page">
       <h1>Home Page</h1>
-      <h2>Users</h2>
-      {users.map((user) => (
+      <Counter />
+      {/*<h2>Users</h2>
+       {users.map((user) => (
         <div className="user" key={user.id}>
           <p>
             <strong>Name:</strong> <span>{user.name}</span>
@@ -39,7 +41,7 @@ function HomePage() {
         asperiores neque odio accusamus optio tempore maxime recusandae
         molestias doloremque porro dolore voluptatibus temporibus, obcaecati
         voluptate quidem. Nam?
-      </p>
+      </p> */}
     </div>
   );
 }
