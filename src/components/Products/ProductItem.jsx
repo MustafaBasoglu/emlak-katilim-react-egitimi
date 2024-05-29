@@ -1,9 +1,10 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import PropTypes from "prop-types";
-import Button from "../UI/Button";
-import { CartContext } from "../../context/CartContext";
-import "./ProductItem.css";
 import { useNavigate } from "react-router-dom";
+import Button from "../UI/Button";
+import { addToCart, deleteFromCart } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
+import "./ProductItem.css";
 
 function ProductItem(props) {
   const {
@@ -16,8 +17,8 @@ function ProductItem(props) {
     cart,
     quantity,
   } = props;
-  const { addToCart, deleteFromCart } = useContext(CartContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <div className="product-item">
@@ -40,7 +41,11 @@ function ProductItem(props) {
         </span>
 
         {cart ? (
-          <Button size="sm" type="danger" onClick={() => deleteFromCart(id)}>
+          <Button
+            size="sm"
+            type="danger"
+            onClick={() => dispatch(deleteFromCart(id))}
+          >
             DELETE FROM CART
           </Button>
         ) : (
@@ -50,7 +55,7 @@ function ProductItem(props) {
               type="primary"
               className={"mb-2 mt-1"}
               onClick={() =>
-                addToCart({ id, image, title, description, price })
+                dispatch(addToCart({ id, image, title, description, price }))
               }
             >
               ADD TO CART
