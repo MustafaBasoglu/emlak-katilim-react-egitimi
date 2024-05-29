@@ -7,7 +7,7 @@ function HomePage() {
     <div className="home-page">
       <h1>Home Page</h1>
       <h2>Users</h2>
-      {users.map((user) => (
+       {users.map((user) => (
         <div className="user" key={user.id}>
           <p>
             <strong>Name:</strong> <span>{user.name}</span>

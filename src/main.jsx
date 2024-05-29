@@ -1,13 +1,11 @@
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import App from "./App";
-import CartProvider from "./context/CartProvider";
+import store from "./redux/store";
 import "./index.css";
-import ThemeProvider from "./context/ThemeProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <CartProvider>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </CartProvider>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
